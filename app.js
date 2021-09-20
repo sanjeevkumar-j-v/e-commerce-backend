@@ -3,13 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const expressLayouts = require("express-ejs-layouts");
-
+var expressLayouts = require("express-ejs-layouts");
+var cors = require('cors');
+const db = require("./config/mongoose");
+var MongoStore = require("connect-mongo");
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
+app.use(cors());
 app.use(expressLayouts);
 
 app.set("layout extractStyles", true);
