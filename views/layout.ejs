@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>E-commerce</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="E-commerce Web Application" />
+    <link rel="icon" href="/img/stlogopink.svg" />
+
+    <link rel="stylesheet" href="/css/bootstrap-5.0.0-alpha-2.min.css" />
+    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <title>SweetTooth</title>
+
     <%- style %>
   </head>
   <body>
+    <div class="preloader">
+      <div class="loader">
+        <div class="ytp-spinner">
+          <div class="ytp-spinner-container">
+            <div class="ytp-spinner-rotator">
+              <div class="ytp-spinner-left">
+                <div class="ytp-spinner-circle"></div>
+              </div>
+              <div class="ytp-spinner-right">
+                <div class="ytp-spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <%- body %>
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
     <%- script %>
+    <script src="/js/bootstrap.5.0.0.alpha-2-min.js"></script>
+    <script src="/js/count-up.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
