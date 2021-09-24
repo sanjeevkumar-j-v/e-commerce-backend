@@ -1,0 +1,72 @@
+ h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+  .card {
+    margin: 20px auto;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    height: 350px;
+    overflow: hidden;
+    width: 300px;
+  }
+  .card > figure {
+    width: 90%;
+    margin: 20px auto 0 auto;
+  }
+  .card > figure > img {
+    width: 100%;
+  }
+  .details {
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    transition: box-shadow 0.3s ease-in-out, top 0.3s ease-in-out;
+  }
+  .card:hover .details {
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+    top: 25%;
+  }
+  .details > .min-details,
+  .details > .options,
+  .details > .options > .options-size,
+  .details > .options > .options-colors {
+    margin-bottom: 20px;
+  }
+  .details > .min-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details > .min-details > h2 > span {
+    color: #7b7b7b;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  .details > .options h1 {
+    margin-bottom: 5px;
+  }
+  .btn {
+    box-sizing: border-box;
+    background-color: #e8505b;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    width: 100%;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  .btn:hover {
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
