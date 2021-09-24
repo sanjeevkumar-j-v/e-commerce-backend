@@ -1,0 +1,66 @@
+<header class="header">
+  <div class="navbar-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand logo" href="/">
+              <img src="/img/stlogopink.svg" alt="Logo" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+
+            <div
+              class="collapse navbar-collapse sub-menu-bar"
+              id="navbarSupportedContent"
+            >
+              <ul id="nav" class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="" href="/"> Home </a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="/products"> Products </a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="#footer"> About </a>
+                </li>
+                <% if (locals.user) { %>
+                <li class="nav-item">
+                  <a class="" href="/cart"> My Cart </a>
+                </li>
+                <li class="nav-item">
+                  <a class="" href="/users/profile">
+                    <img
+                      class="profile-image"
+                      src="/img/male_avatar.svg"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="" href="/users/sign-out"> Sign-Out </a>
+                </li> -->
+                <% } else { %>
+                <li class="nav-item">
+                  <a class="" href="/users/sign-in"> Login </a>
+                </li>
+                <% } %>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,1 +1,57 @@
-<h1>Signup</h1>
+<link rel="stylesheet" href="/css/form.css" />
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay=".2s">
+          <form action="/users/create" method="POST" class="form-container">
+            <div class="brand-title">REGISTER</div>
+            <div class="inputs">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Sweet Tooth"
+                required
+              />
+              <label>Phone Number</label>
+              <input type="text" name="phone" placeholder="9876543210" />
+              <label>Address</label>
+              <input type="text" name="address" placeholder="Location" />
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="example@test.com"
+                required
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="****"
+                required
+              />
+              <label>Retype Password</label>
+              <input
+                type="password"
+                name="confirm_password"
+                placeholder="****"
+                required
+              />
+              <button type="submit">SIGN-UP</button>
+              <p class="pt-25 alternate-link">
+                Already registered? <a href="/users/sign-in">Login Here</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

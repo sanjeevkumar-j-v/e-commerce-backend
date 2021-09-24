@@ -1,0 +1,52 @@
+<style>
+  /* .profile-details {
+    font-size: 150%;
+  } */
+  .details-name h5 {
+    color: #e8505b;
+  }
+</style>
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center pb-50">
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp text-center" data-wow-delay=".2s">
+          <h3>Your Profile</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="wow fadeInUp profile-details" data-wow-delay=".2s">
+          <dl class="row">
+            <dt class="col details-name"><h5>Name</h5></dt>
+            <dd class="col details-value"><h5><%= user.name %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>EmailID</h5></dt>
+            <dd class="col details-value"><h5><%= user.email %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Phone Number</h5></dt>
+            <dd class="col details-value"><h5><%= user.phone %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Address</h5></dt>
+            <dd class="col details-value"><h5><%= user.address %></h5></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-3 justify-content-center">
+          <a class="main-btn btn-hover wow fadeInUp" href="/users/sign-out">
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

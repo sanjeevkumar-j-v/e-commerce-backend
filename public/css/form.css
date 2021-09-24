@@ -1,0 +1,82 @@
+.form-container {
+  position: relative;
+  width: 350px;
+  /* height: 500px; */
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #e8505b;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.form-container .inputs label,
+.form-container .inputs input,
+.form-container .inputs button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-container .inputs label {
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
+
+.form-container .inputs label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+.form-container .inputs input::placeholder {
+  color: gray;
+}
+
+.form-container .inputs input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.form-container button {
+  margin-top: 20px;
+  background: #e8505b;
+  color: white;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+.form-container button:hover {
+  box-shadow: none;
+}
+/* h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+.alternate-link {
+  text-align: center;
+}

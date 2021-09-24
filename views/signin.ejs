@@ -1,1 +1,39 @@
-<h1>Signin</h1>
+<link rel="stylesheet" href="/css/form.css" />
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay=".2s">
+          <form action="/users/create-session" method="POST" class="form-container">
+            <div class="brand-title">LOGIN</div>
+            <div class="inputs">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="example@test.com"
+                required
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="****"
+                required
+              />
+              <button type="submit">SIGN-IN</button>
+              <p class="pt-25 alternate-link">
+                New User? <a href="/users/sign-up">Register Here</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

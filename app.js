@@ -6,7 +6,11 @@ var logger = require('morgan');
 var expressLayouts = require("express-ejs-layouts");
 var cors = require('cors');
 const db = require("./config/mongoose");
-var MongoStore = require("connect-mongo");
+// used for session cookie
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+const MongoStore = require("connect-mongo");
 
 var indexRouter = require('./routes/index');
 
@@ -26,6 +30,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// // mongo strore is used to store session cookie
+app.use(
+  session({
+    secret: "blahblah",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 100,
+    },
+    //     store: new MongoStore(
+    //       {
+    //         mongooseConnection: db,
+    //         autoRemove: "disabled",
+    //       },
+    //       function (err) {
+    //         console.log(err || "connect-mongodb setup ok");
+    //       }
+    //     ),
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb://localhost/sweet_tooth_store"
+    }),
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 app.use('/', indexRouter);
 
