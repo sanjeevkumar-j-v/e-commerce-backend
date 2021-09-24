@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/css/products.css" />
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-150">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+        <div class="section-title text-center mb-70">
+          <span class="wow fadeInUp" data-wow-delay=".2s"> Our Products </span>
+          <h1 class="wow fadeInUp" data-wow-delay=".4s">Made With Love</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <% for (i in products) { %>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay=".2s">
+          <div class="card">
+            <figure>
+              <img src="/assets/img/products/almond-cookies.jpeg" alt="" />
+            </figure>
+            <section class="details">
+              <div class="min-details">
+                <h2>
+                  <%= products[i].name %>
+                  <span>Product description comes here...</span>
+                </h2>
+                <h2 class="price">&#8377;<%= products[i].price %></h2>
+              </div>
+
+              <div class="options">
+                <div class="options-size">
+                  <h2>Ingredients</h2>
+                  <p><%= products[i].ingredients %></p>
+                </div>
+              </div>
+              <a href="/cart/add/<%= products[i]._id %>" class="btn">
+                Add to cart
+              </a>
+            </section>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>
