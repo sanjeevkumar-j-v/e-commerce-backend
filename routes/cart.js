@@ -4,5 +4,6 @@ var cartContoller = require("../controllers/cart_controller.js");
 
 router.get("/", cartContoller.view);
 router.get("/add/:productId", cartContoller.add);
+router.get("/remove/:cartitemId", cartContoller.remove);
 
 module.exports = router;

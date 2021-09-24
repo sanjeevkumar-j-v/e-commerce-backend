@@ -12,7 +12,10 @@
     </div>
     <div class="row justify-content-center">
       <% if (cartDetails[0]) { %> <% for (i in cartDetails) { %>
-      <p><%= cartDetails[i].item.name %> - <%= cartDetails[i].count %></p>
+      <p>
+        <%= cartDetails[i].item.name %> - <%= cartDetails[i].count %>
+        <a href="/cart/remove/<%= cartDetails[i].id %>">Remove</a>
+      </p>
       <br />
       <% } %> <% } else { %>
       <h2 class="text-center pb-50">No Items Found!</h2>
