@@ -14,6 +14,9 @@ const cartSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Cartitem",
     }],
+    ordered: {
+      type: Boolean
+    }
   },
   {
     timestamps: true,

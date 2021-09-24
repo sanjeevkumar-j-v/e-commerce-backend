@@ -1,0 +1,31 @@
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-150">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+        <div class="section-title text-center mb-70">
+          <span class="wow fadeInUp" data-wow-delay=".2s"> My Cart </span>
+          <!-- <h1 class="wow fadeInUp" data-wow-delay=".4s">Made With Love</h1> -->
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <% if (cartDetails[0]) { %> <% for (i in cartDetails) { %>
+      <p><%= cartDetails[i].item.name %> - <%= cartDetails[i].count %></p>
+      <br />
+      <% } %> <% } else { %>
+      <h2 class="text-center pb-50">No Items Found!</h2>
+      <% } %>
+    </div>
+    <div class="row justify-content-center pb-100">
+      <div class="col-4 justify-content-center">
+        <a class="main-btn btn-hover wow fadeInUp" href="/products">
+          Continue Shopping
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>
