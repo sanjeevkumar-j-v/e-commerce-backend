@@ -37,7 +37,7 @@ module.exports.add = function (req, res) {
                   return;
                 }
                 console.log("My New Cart: ", cart);
-                return res.redirect("/");
+                return res.redirect("/cart");
               });
             }
           );
@@ -79,7 +79,7 @@ module.exports.add = function (req, res) {
                         return;
                       }
                       console.log("Cart Updated: ", cart);
-                      return res.redirect("/");
+                      return res.redirect("/cart");
                     }
                   );
                 }
@@ -111,18 +111,19 @@ module.exports.add = function (req, res) {
 
 // renders products page
 module.exports.view = async function (req, res, next) {
-  var cart = await Cart.find({ userId: req.user._id, ordered: false });
-  var cartitems = await Cartitem.find({ id: cart.cartitemIds });
+  var cart = await Cart.findOne({ userId: req.user._id, ordered: false });
   var cartDetails = [];
-  for (var i in cartitems) {
-    var prod = await Product.findById(cartitems[i].productId);
-    cartDetails.push({
-      id: cartitems[i].id,
-      item: prod,
-      count: cartitems[i].count,
-    });
+  if (cart) {
+    for (var i in cart.cartitemIds) {
+      var cartitem = await Cartitem.findById(cart.cartitemIds[i]);
+      var prod = await Product.findById(cartitem.productId);
+      cartDetails.push({
+        id: cartitem.id,
+        item: prod,
+        count: cartitem.count,
+      });
+    }
   }
-  // console.log("cartitems", cartDetails);
   return res.render("cart", {
     cartDetails,
   });

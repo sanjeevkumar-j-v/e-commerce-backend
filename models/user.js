@@ -22,17 +22,20 @@ const userSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    // array of order ids
-    orderIds: [{
+    isAdmin: {
+      type: Boolean,
+    },
+    orderIds: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Order'
-    }],
+        ref: "Order",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
-
 
 const User = mongoose.model("User", userSchema);
 

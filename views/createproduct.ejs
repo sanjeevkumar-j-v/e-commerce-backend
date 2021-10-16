@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/css/form.css" />
+<style>
+  input[type="file" i] button {
+    opacity: 0;
+    border-width: 0px;
+    background-color: aqua;
+  }
+  select {
+    background: #ecf0f3;
+    color: #676f73;
+    padding: 10px;
+    padding-left: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    border-width: 0px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  }
+  select:focus {
+    outline: none;
+  }
+  select option {
+    height: 30px;
+    border-radius: 30px;
+  }
+</style>
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay=".2s">
+          <form
+            action="/products/add"
+            method="post"
+            enctype="multipart/form-data"
+            class="form-container"
+          >
+            <div class="brand-title">Add Product</div>
+            <div class="inputs">
+              <label for="">Product Name</label>
+              <input type="text" name="name" placeholder="" required />
+              <label for="">Description</label>
+              <input type="text" name="description" placeholder="" />
+              <label for="">Price / 250g</label>
+              <input type="number" name="price" placeholder="" required />
+              <label for="">Ingredients</label>
+              <input type="text" name="ingredients" placeholder="" required />
+              <label for="">Category</label>
+              <select id="category" name="category" required>
+                <option value="cookies">Cookies</option>
+                <option value="tarts&melts">Tarts & Melts</option>
+                <option value="other">Other</option>
+              </select>
+              <label for="">Image</label>
+              <input type="file" name="img_url" id="image" placeholder="" />
+              <button type="submit">ADD PRODUCT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

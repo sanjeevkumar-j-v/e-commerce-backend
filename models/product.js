@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-// const multer = require('multer');
-// const path = require('path');
-// const PRODUCT_PATH = path.join('/uploads/products/images');
+const multer = require("multer");
+const path = require("path");
+const PRODUCT_PATH = path.join("/uploads/products/images");
 
 const productSchema = new mongoose.Schema(
   {
@@ -17,7 +17,6 @@ const productSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      // required: true
     },
     ingredients: {
       type: String,
@@ -27,7 +26,6 @@ const productSchema = new mongoose.Schema(
     },
     img_url: {
       type: String,
-      // required: true
     },
   },
   {
@@ -35,18 +33,27 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-// let storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, path.join(__dirname, '..', PRODUCT_PATH));
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-//   }
-// });
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../public", PRODUCT_PATH));
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      req.body.name
+      +
+        "-" +
+        Date.now() +
+        path.extname(file.originalname)
+    );
+  },
+});
 
-// // static methods
-// productSchema.statics.uploadedImage = multer({ storage: storage}).single('img_url');
-// productSchema.statics.productPath = PRODUCT_PATH;
+// static methods
+productSchema.statics.uploadedImage = multer({ storage: storage }).single(
+  "img_url"
+);
+productSchema.statics.productPath = PRODUCT_PATH;
 
 const Product = mongoose.model("Product", productSchema);
 

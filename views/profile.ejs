@@ -39,11 +39,18 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-3 justify-content-center">
+        <div class="col-3 d-flex justify-content-center">
           <a class="main-btn btn-hover wow fadeInUp" href="/users/sign-out">
             Logout
           </a>
         </div>
+        <% if (locals.user.isAdmin == true) { %>
+        <div class="col-3 d-flex justify-content-center">
+          <a class="main-btn btn-hover wow fadeInUp" href="/products/create">
+            Admin Page
+          </a>
+        </div>
+        <% } %>
       </div>
     </div>
   </div>

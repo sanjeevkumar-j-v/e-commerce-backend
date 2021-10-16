@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use("/users", usersRouter);
-router.use("/products", productsRouter);
+router.use("/products", passport.checkAuthentication, productsRouter);
 router.use("/cart",passport.checkAuthentication, cartRouter);
 
 router.use("/api", require("./api"));

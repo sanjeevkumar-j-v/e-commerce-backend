@@ -19,13 +19,13 @@
         <div class="wow fadeInUp" data-wow-delay=".2s">
           <div class="card">
             <figure>
-              <img src="/assets/img/products/almond-cookies.jpeg" alt="" />
+              <img src="<%= products[i].img_url %>" alt="" />
             </figure>
             <section class="details">
               <div class="min-details">
                 <h2>
                   <%= products[i].name %>
-                  <span>Product description comes here...</span>
+                  <span><%= products[i].description %></span>
                 </h2>
                 <h2 class="price">&#8377;<%= products[i].price %></h2>
               </div>
