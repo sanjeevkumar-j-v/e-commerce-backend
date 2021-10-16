@@ -42,6 +42,7 @@
   .details > .min-details {
     display: flex;
     justify-content: space-between;
+    min-height: 50px;
   }
   .details > .min-details > h2 > span {
     color: #7b7b7b;
