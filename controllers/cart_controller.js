@@ -116,12 +116,14 @@ module.exports.view = async function (req, res, next) {
   if (cart) {
     for (var i in cart.cartitemIds) {
       var cartitem = await Cartitem.findById(cart.cartitemIds[i]);
-      var prod = await Product.findById(cartitem.productId);
-      cartDetails.push({
-        id: cartitem.id,
-        item: prod,
-        count: cartitem.count,
-      });
+      if (cartitem) {
+        var prod = await Product.findById(cartitem.productId);
+        cartDetails.push({
+          id: cartitem.id,
+          item: prod,
+          count: cartitem.count,
+        });
+      }
     }
   }
   return res.render("cart", {
@@ -139,10 +141,10 @@ module.exports.update = async function (req, res) {
 
 module.exports.remove = async function (req, res) {
   // console.log("Delete product: ", req.params.id);
-  Cartitem.findByIdAndDelete({ _id: req.params.cartitemId }, function (err) {
+  Cartitem.findByIdAndDelete(req.params.cartitemId , function (err) {
     if (err) {
       console.log("Error: ", err);
-      return;
+      return res.redirect('/');
     }
     console.log("Cartitem deleted");
     return res.redirect("/cart");
