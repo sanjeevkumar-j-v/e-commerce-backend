@@ -80,8 +80,13 @@
       <% } %>
     </div>
     <div class="row justify-content-center pb-100">
-      <div class="col-lg-4 col-sm-6 d-flex justify-content-center">
-        <a class="main-btn btn-hover wow fadeInUp" href="/products">
+      <div class="col-lg-3 col-sm-6 d-flex flex-column">
+        <% if (cartDetails[0]) { %>
+          <a class="main-btn btn-hover wow fadeInUp" href="/cart/purchase">
+            Purchase Now
+          </a>
+        <% } %>
+        <a class="main-btn btn-hover wow fadeInUp mt-10" href="/products">
           Continue Shopping
         </a>
       </div>

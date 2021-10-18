@@ -3,6 +3,7 @@ const Product = require("../models/product");
 const Cart = require("../models/cart");
 const Cartitem = require("../models/cartitem");
 const User = require("../models/user");
+const Order = require("../models/order");
 
 module.exports.add = function (req, res) {
   try {
@@ -148,6 +149,24 @@ module.exports.remove = async function (req, res) {
     }
     console.log("Cartitem deleted");
     return res.redirect("/cart");
+  });
+};
+
+module.exports.purchase = async function (req, res) {
+  var cart = await Cart.findOne({ userId: req.user._id, ordered: false });
+  var user = await User.findById(req.user.id);
+  console.log("cart found inside purchase: ", cart);
+  var newOrder = { status: "ordered", address: user.name + ", " + user.address + ", "+user.phone , userId: req.user._id, cartId: cart.id };
+  Order.create(newOrder, function(err, order ) {
+    if (err) {
+      console.log("Error in creating order: ", err);
+      return;
+    }
+    console.log("Order created: ", order);
+    Cart.findByIdAndUpdate(cart.id, {ordered: true}, function(err) {
+      console.log("Cart updated");
+      return res.redirect('/cart');
+    })
   });
 };
 
