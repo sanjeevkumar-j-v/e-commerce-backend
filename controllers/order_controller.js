@@ -71,3 +71,8 @@ module.exports.view = async function (req, res) {
     return res.render("order", {order: orderDetails});
   }
 };
+module.exports.dispatch = async function (req, res) {
+  Order.findByIdAndUpdate(req.params.orderId, {status: 'Dispatched'}, function(err, order) {
+    return res.redirect("/orders");
+  }  
+)};
