@@ -44,14 +44,46 @@
             Logout
           </a>
         </div>
-        <% if (locals.user.isAdmin == true) { %>
+        <!-- <% if (locals.user.isAdmin == true) { %>
         <div class="col-3 d-flex justify-content-center">
           <a class="main-btn btn-hover wow fadeInUp" href="/products/create">
             Admin Page
           </a>
         </div>
-        <% } %>
+        <% } %> -->
       </div>
+      <% if (orders[0]) { %>
+      <div class="row justify-content-center pt-50 pb-40">
+        <div class="col-10 d-flex justify-content-center flex-column">
+          <div class="wow fadeInUp" data-wow-delay=".2s">
+            <h3>Purchase History</h3>
+          </div>
+              <table class="table table-responsive">
+                <th>
+                  <tr>
+                    <td>S.NO</td>
+                    <td>Date</td>
+                    <td>Status</td>
+                    <td>Items</td>
+                    <td>Total Amount</td>
+                  </tr>
+                </th>
+              <% for (i in orders) { %>
+                <tr>
+                  <td><%= parseInt(i)+1 %></td>
+                  <td><%= orders[i].date %></td>
+                  <td><%= orders[i].status %></td>
+                  <td><% for (j in orders[i].cartDetails) { %>
+                    <%= orders[i].cartDetails[j].item %> - <%= orders[i].cartDetails[j].count %> <br>
+                    <% } %> </td>
+                  <td><%= orders[i].totalAmount %></td>
+                </tr>
+              <% } %>
+            </table>
+
+        </div>
+      </div>
+      <% } %>
     </div>
   </div>
 </section>

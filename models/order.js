@@ -17,6 +17,9 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Cart",
     },
+    totalAmount: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

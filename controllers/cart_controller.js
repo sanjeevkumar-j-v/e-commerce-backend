@@ -154,9 +154,19 @@ module.exports.remove = async function (req, res) {
 
 module.exports.purchase = async function (req, res) {
   var cart = await Cart.findOne({ userId: req.user._id, ordered: false });
+  var totalAmount = 0;
+  if (cart) {
+    for (var i in cart.cartitemIds) {
+      var cartitem = await Cartitem.findById(cart.cartitemIds[i]);
+      if (cartitem) {
+        var prod = await Product.findById(cartitem.productId);
+        totalAmount += prod.price * cartitem.count;
+      }
+    }
+  }
   var user = await User.findById(req.user.id);
   console.log("cart found inside purchase: ", cart);
-  var newOrder = { status: "ordered", address: user.name + ", " + user.address + ", "+user.phone , userId: req.user._id, cartId: cart.id };
+  var newOrder = { status: "ordered", address: user.name + ", " + user.address + ", "+user.phone , userId: req.user._id, cartId: cart.id, totalAmount: totalAmount };
   Order.create(newOrder, function(err, order ) {
     if (err) {
       console.log("Error in creating order: ", err);
