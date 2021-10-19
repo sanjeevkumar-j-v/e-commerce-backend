@@ -44,15 +44,10 @@ module.exports.add = function (req, res) {
           );
         } else {
           console.log("Cart found: ", cart);
-          Cartitem.find({ id: cart.cartitemIds }, function (err, olditems) {
+          Cartitem.find({ _id: cart.cartitemIds }, function (err, olditems) {
             console.log("Old Cart Items: ", olditems);
             var existingCartitemId = null;
             for (var i in olditems) {
-              console.log(
-                "two ids..:",
-                olditems[i].productId,
-                req.params.productId
-              );
               if (olditems[i].productId == req.params.productId) {
                 existingCartitemId = olditems[i].id;
                 console.log("existingCartitemId: ", existingCartitemId);
