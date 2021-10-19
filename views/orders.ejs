@@ -1,0 +1,62 @@
+<style>
+  /* .profile-details {
+    font-size: 150%;
+  } */
+  .details-name h5 {
+    color: #e8505b;
+  }
+  .purchase-details .table-head {
+    color: #e8505b;
+    font-weight: bold;
+    font-size: 130%;
+  }
+  .view-details {
+    padding: 10px 15px;
+  }
+</style>
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="row justify-content-center pt-50 pb-40">
+        <div class="col-lg-10 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
+          <div class="wow fadeInUp pb-20 text-center" data-wow-delay=".2s">
+            <h3>Orders</h3>
+          </div>
+          <% if (orders[0]) { %>
+              <table class="purchase-details table table-responsive">
+                <tr class="table-head">
+                  <td>S.NO</td>
+                  <td>Date</td>
+                  <td>Status</td>
+                  <td>Items</td>
+                  <td>Action</td>
+                </tr>
+              <% for (i in orders) { %>
+                <tr>
+                  <td><%= parseInt(i)+1 %></td>
+                  <td><%= orders[i].date %></td>
+                  <td><%= orders[i].status %></td>
+                  <td><% for (j in orders[i].cartDetails) { %>
+                    <%= orders[i].cartDetails[j].item %> - <%= orders[i].cartDetails[j].count %> <br>
+                    <% } %> </td>
+                  <td>
+                    <a class="view-details main-btn btn-hover wow fadeInUp" href="/orders/view/<%= orders[i]._id %>">
+                      View Details
+                    </a>
+                  </td>
+                </tr>
+              <% } %>
+            </table>
+
+            <% } else { %>
+              <h1>No orders yet!</h1>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

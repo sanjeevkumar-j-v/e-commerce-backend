@@ -5,6 +5,11 @@
   .details-name h5 {
     color: #e8505b;
   }
+  .purchase-details .table-head {
+    color: #e8505b;
+    font-weight: bold;
+    font-size: 130%;
+  }
 </style>
 <%- include('header'); %>
 
@@ -54,20 +59,18 @@
       </div>
       <% if (orders[0]) { %>
       <div class="row justify-content-center pt-50 pb-40">
-        <div class="col-10 d-flex justify-content-center flex-column">
-          <div class="wow fadeInUp" data-wow-delay=".2s">
+        <div class="col-lg-10 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
+          <div class="wow fadeInUp pb-20" data-wow-delay=".2s">
             <h3>Purchase History</h3>
           </div>
-              <table class="table table-responsive">
-                <th>
-                  <tr>
-                    <td>S.NO</td>
-                    <td>Date</td>
-                    <td>Status</td>
-                    <td>Items</td>
-                    <td>Total Amount</td>
-                  </tr>
-                </th>
+              <table class="purchase-details table table-responsive">
+                <tr class="table-head">
+                  <td>S.NO</td>
+                  <td>Date</td>
+                  <td>Status</td>
+                  <td>Items</td>
+                  <td>Total Amount</td>
+                </tr>
               <% for (i in orders) { %>
                 <tr>
                   <td><%= parseInt(i)+1 %></td>

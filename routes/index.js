@@ -3,6 +3,7 @@ var router = express.Router();
 var usersRouter = require("./users");
 var productsRouter = require("./products");
 var cartRouter = require("./cart");
+var orderRouter = require("./order");
 
 var passport = require("passport");
 
@@ -16,6 +17,7 @@ router.get('/dashboard', function(req, res, next) {
 router.use("/users", usersRouter);
 router.use("/products", passport.checkAuthentication, productsRouter);
 router.use("/cart",passport.checkAuthentication, cartRouter);
+router.use("/orders",passport.checkAuthentication, orderRouter);
 
 router.use("/api", require("./api"));
 

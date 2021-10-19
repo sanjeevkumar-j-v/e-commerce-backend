@@ -1,0 +1,69 @@
+<style>
+  /* .profile-details {
+    font-size: 150%;
+  } */
+  .details-name h5 {
+    color: #e8505b;
+  }
+  .purchase-details .table-head {
+    color: #e8505b;
+    font-weight: bold;
+    font-size: 130%;
+  }
+</style>
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100 pb-50">
+  <div class="container">
+    <div class="row justify-content-center pb-50">
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp text-center" data-wow-delay=".2s">
+          <h3>Order Details</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="wow fadeInUp profile-details" data-wow-delay=".2s">
+      <% if (order) { %>
+          <dl class="row">
+            <dt class="col details-name"><h5>Status</h5></dt>
+            <dd class="col details-value"><h5><%= order.status %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Delivery Address</h5></dt>
+            <dd class="col details-value"><h5><%= String(order.address).split(',') %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Received Amount</h5></dt>
+            <dd class="col details-value"><h5><%= order.totalAmount %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Order Time</h5></dt>
+            <dd class="col details-value"><h5><%= order.date %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Product List</h5></dt>
+            <dd class="col details-value">
+              <h5>
+              <% for (j in order.cartDetails) { %>
+              <%= order.cartDetails[j].item %> - <%= order.cartDetails[j].count %> <br>
+              <% } %> 
+              </h5>
+            </dd>
+          </dl>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4 d-flex justify-content-center">
+            <a class="main-btn btn-hover wow fadeInUp" href="/orders/dispatch/<%= order._id %>">
+              Dispatch
+            </a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>
