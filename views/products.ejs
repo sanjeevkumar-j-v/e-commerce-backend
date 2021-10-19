@@ -12,6 +12,18 @@
         </div>
       </div>
     </div>
+    <% if (locals.user.isAdmin == true) { %>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-3 d-flex justify-content-center flex-column">
+            <a class="main-btn btn-hover wow fadeInUp mb-10" href="/products/create">
+              Add a new product
+            </a>
+            <a class="main-btn btn-hover wow fadeInUp" href="/products/modify">
+              Modify Products
+            </a>
+        </div>
+      </div>
+    <% } %>
     <div class="row">
       <% for (i in products) { %>
 
@@ -46,6 +58,20 @@
       <% } %>
     </div>
   </div>
+  <% if (locals.user.isAdmin == true) { %>
+    <div class="container pt-50 pb-50">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 d-flex justify-content-center flex-column">
+            <a class="main-btn btn-hover wow fadeInUp mb-10" href="/products/create">
+              Add a new product
+            </a>
+            <a class="main-btn btn-hover wow fadeInUp" href="/products/modify">
+              Modify Products
+            </a>
+        </div>
+      </div>
+    </div>
+  <% } %>
 </section>
 
 <%- include('footer'); %>

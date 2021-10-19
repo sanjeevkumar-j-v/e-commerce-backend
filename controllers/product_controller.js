@@ -32,7 +32,23 @@ module.exports.delete = async function (req, res) {
 module.exports.create = function (req, res) {
   return res.render("createproduct");
 };
-
+module.exports.modify = async function (req, res) {
+  var products = await Product.find({});
+  return res.render("modifyproducts", {
+    products,
+  });
+};
+module.exports.update = async function (req, res) {
+  // console.log("Delete product: ", req.params.id);
+  Product.findByIdAndUpdate(req.body.id, req.body, function (err) {
+    if (err) {
+      console.log("Error: ", err);
+      return;
+    }
+    console.log("Product Updated");
+    return res.redirect("/products");
+  });
+};
 module.exports.add = function (req, res) {
   Product.uploadedImage(req, res, function (err) {
     console.log("req.body : ", req.body);

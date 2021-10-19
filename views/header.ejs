@@ -32,17 +32,25 @@
                 <li class="nav-item">
                   <a class="" href="/products"> Products </a>
                 </li>
+                <% if (!(locals.user && locals.user.isAdmin == true)) { %>
                 <li class="nav-item">
-                  <a class="" href="#footer"> About </a>
+                  <a class="" href="#about"> About </a>
                 </li>
+                <%}%>
                 <% if (locals.user) { %>
-                <li class="nav-item">
-                  <a class="" href="/cart"> My Cart </a>
-                </li>
-                <li class="nav-item">
-                  <a class="" href="/users/profile">
-                    <img
-                      class="profile-image"
+                <% if (locals.user.isAdmin == true) { %>
+                  <li class="nav-item">
+                    <a class="" href="/dashboard"> Dashboard </a>
+                  </li>
+                  <%} else { %>
+                    <li class="nav-item">
+                      <a class="" href="/cart"> My Cart </a>
+                    </li>
+                    <%}%>
+                    <li class="nav-item">
+                      <a class="" href="/users/profile">
+                        <img
+                        class="profile-image"
                       src="/img/male_avatar.svg"
                       alt=""
                     />

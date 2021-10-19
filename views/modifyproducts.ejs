@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/css/products.css" />
+<style>
+  .product-form input {
+    border: 0px solid transparent;
+    border-bottom: 1px solid black;
+    /* color: #d9dcdd; */
+    background: transparent;
+  }
+  .product-form input:focus {
+    border-bottom: 2px solid #e8505b
+  }
+  .product-form .name,
+  .product-form .description {
+    margin-bottom: 15px;
+    width: 180px;
+  }
+  .product-form .price {
+    width: 50px;
+    text-align: right;
+  }
+  .product-form .ingredients {
+    width: 260px;
+    height: 50px;
+    word-wrap: break-word;
+  }
+</style>
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-150">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+        <div class="section-title text-center mb-70">
+          <!-- <span class="wow fadeInUp" data-wow-delay=".2s"> Make Modifications Here </span> -->
+          <h1 class="wow fadeInUp" data-wow-delay=".4s">Make Modifications Here</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <% for (i in products) { %>
+      <div class="col-lg-4 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay=".2s">
+          <form class="card product-form" action="/products/update" method="post">
+            <figure>
+              <img src="<%= products[i].img_url %>" alt="" />
+            </figure>
+            <section class="details">
+              <div class="min-details">
+                <h2>
+                  <input type="text" name="name" class="name" value="<%= products[i].name %>"/>
+                  <span>
+                    <input type="text" name="description" class="description" value="<%= products[i].description %>"/>
+                  </span>
+                </h2>
+                <h2 class="">&#8377;<input type="text" name="price" class="price" value="<%= products[i].price %>"></h2>
+              </div>
+
+              <div class="options">
+                <div class="options-size">
+                  <h2>Ingredients</h2>
+                  <p><input rows="2" cols="40" name="ingredients" class="ingredients" value="<%= products[i].ingredients %>" /></p>
+                </div>
+              </div>
+              <input style="visibility: hidden; position: absolute;" type="text" name="id" value="<%= products[i]._id %>">
+              <button class="btn" type="submit">
+                Modify
+              </button>
+            </section>
+          </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

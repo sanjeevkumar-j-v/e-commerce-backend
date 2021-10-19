@@ -8,9 +8,11 @@ var passport = require("passport");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home', { title: 'Express' });
+  res.render('home');
 });
-
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard');
+});
 router.use("/users", usersRouter);
 router.use("/products", passport.checkAuthentication, productsRouter);
 router.use("/cart",passport.checkAuthentication, cartRouter);
