@@ -1,0 +1,58 @@
+<style>
+  .details-name h5 {
+    color: #e8505b;
+  }
+</style>
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-6">
+        <div class="section-title text-center">
+          <span class="wow" data-wow-delay=".2s">
+            Payment
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-10 col-sm-12">
+        <div class="wow fadeInUp profile-details" data-wow-delay=".2s">
+          <dl class="row">
+            <dt class="col details-name"><h5>Your Name </h5></dt>
+            <dd class="col details-value"><h5><%= order.user.name %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Email ID </h5></dt>
+            <dd class="col details-value"><h5><%= order.user.email %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Phone Number </h5></dt>
+            <dd class="col details-value"><h5><%= order.user.phone %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Delivery Address </h5></dt>
+            <dd class="col details-value"><h5><%= order.user.address %></h5></dd>
+          </dl>
+          <dl class="row">
+            <dt class="col details-name"><h5>Total Amount</h5></dt>
+            <dd class="col details-value"><h5><%= order.totalAmount %></h5></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center pb-100">
+      <div class="col-lg-3 col-sm-6 d-flex flex-column">
+        <a class="main-btn btn-hover wow fadeInUp" href="/cart/confirm-purchase">
+          Pay
+        </a>
+        <a class="main-btn btn-hover wow fadeInUp mt-10" href="/products">
+          Go To Cart
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('footer'); %>

@@ -57,6 +57,7 @@
         </div>
         <% } %> -->
       </div>
+      <% if (locals.user.isAdmin != true) { %>
       <% if (orders[0]) { %>
       <div class="row justify-content-center pt-50 pb-40">
         <div class="col-lg-10 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
@@ -70,6 +71,7 @@
                   <td>Status</td>
                   <td>Items</td>
                   <td>Total Amount</td>
+                  <!-- <td>Action</td> -->
                 </tr>
               <% for (i in orders) { %>
                 <tr>
@@ -80,12 +82,22 @@
                     <%= orders[i].cartDetails[j].item %> - <%= orders[i].cartDetails[j].count %> <br>
                     <% } %> </td>
                   <td><%= orders[i].totalAmount %></td>
+                  <!-- <td>
+                    <% if(orders[i].status == 'Dispatched') { %>
+                      <a class="main-btn btn-hover wow fadeInUp pt-10 pb-10 pr-10 pl-10" href="/order/deliver/<%= orders[i]._id %>">
+                        Received
+                      </a>
+                    <% } else { %>
+                      -
+                    <% } %>
+                  </td> -->
                 </tr>
               <% } %>
             </table>
 
         </div>
       </div>
+      <% } %>
       <% } %>
     </div>
   </div>

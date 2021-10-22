@@ -146,6 +146,22 @@ module.exports.remove = async function (req, res) {
     return res.redirect("/cart");
   });
 };
+module.exports.viewpurchase = async function (req, res) {
+  var cart = await Cart.findOne({ userId: req.user._id, ordered: false });
+  var totalAmount = 0;
+  if (cart) {
+    for (var i in cart.cartitemIds) {
+      var cartitem = await Cartitem.findById(cart.cartitemIds[i]);
+      if (cartitem) {
+        var prod = await Product.findById(cartitem.productId);
+        totalAmount += prod.price * cartitem.count;
+      }
+    }
+  }
+  var user = await User.findById(req.user.id);
+  var newOrder = { user, totalAmount: totalAmount };
+  return res.render('purchase', {order: newOrder});
+};
 
 module.exports.purchase = async function (req, res) {
   var cart = await Cart.findOne({ userId: req.user._id, ordered: false });
@@ -170,7 +186,7 @@ module.exports.purchase = async function (req, res) {
     console.log("Order created: ", order);
     Cart.findByIdAndUpdate(cart.id, {ordered: true}, function(err) {
       console.log("Cart updated");
-      return res.redirect('/cart');
+      return res.render('success');
     })
   });
 };
