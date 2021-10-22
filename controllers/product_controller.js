@@ -60,6 +60,7 @@ module.exports.add = function (req, res) {
 
       if (!product) {
         let prod = req.body;
+        prod.sales_count = 0;
         if (req.file) {
           prod.img_url = Product.productPath + "/" + req.file.filename;
         }

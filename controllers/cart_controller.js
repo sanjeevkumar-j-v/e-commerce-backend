@@ -171,6 +171,7 @@ module.exports.purchase = async function (req, res) {
       var cartitem = await Cartitem.findById(cart.cartitemIds[i]);
       if (cartitem) {
         var prod = await Product.findById(cartitem.productId);
+        await Product.findByIdAndUpdate(cartitem.productId, {sales_count: prod.sales_count+1});
         totalAmount += prod.price * cartitem.count;
       }
     }

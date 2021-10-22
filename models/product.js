@@ -15,6 +15,9 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    sales_count: {
+      type: Number,
+    },
     description: {
       type: String,
     },
