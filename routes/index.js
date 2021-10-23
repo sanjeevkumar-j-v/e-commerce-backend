@@ -4,13 +4,12 @@ var usersRouter = require("./users");
 var productsRouter = require("./products");
 var cartRouter = require("./cart");
 var orderRouter = require("./order");
+var productContoller = require("../controllers/product_controller.js");
 
 var passport = require("passport");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('home');
-});
+router.get('/', productContoller.topsales);
 router.get('/dashboard', function(req, res, next) {
   res.render('dashboard');
 });

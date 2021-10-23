@@ -106,3 +106,9 @@ module.exports.sales = async function (req, res) {
     salescount
   });
 };
+module.exports.topsales = async function (req, res) {
+  var products = await Product.find({}).sort({'sales_count': -1});
+  return res.render("home", {
+    products
+  });
+};
