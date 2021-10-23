@@ -20,8 +20,16 @@
   }
   .product-form .ingredients {
     width: 260px;
-    height: 50px;
-    word-wrap: break-word;
+    height: 30px;
+  }
+  .details > .min-details {
+    min-height: 30px;
+  }
+  .card:hover .details {
+    top: 20%;
+  }
+  .btn {
+    padding: 7px;
   }
 </style>
 
@@ -63,9 +71,12 @@
                 </div>
               </div>
               <input style="visibility: hidden; position: absolute;" type="text" name="id" value="<%= products[i]._id %>">
-              <button class="btn" type="submit">
-                Modify
+              <button class="btn mb-2" type="submit">
+                <i class="lni lni-upload"></i> Modify
               </button>
+              <a href="/products/remove/<%= products[i]._id %>" class="btn">
+                <i class="lni lni-trash"></i> Remove
+              </a>
             </section>
           </form>
         </div>

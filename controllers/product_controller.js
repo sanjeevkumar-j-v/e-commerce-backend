@@ -78,3 +78,14 @@ module.exports.add = function (req, res) {
     });
   });
 };
+module.exports.remove = async function (req, res) {
+  // console.log("Delete product: ", req.params.id);
+  Product.findByIdAndDelete(req.params.productId , function (err) {
+    if (err) {
+      console.log("Error: ", err);
+      return res.redirect('/');
+    }
+    console.log("Product deleted");
+    return res.redirect("/products");
+  });
+};
