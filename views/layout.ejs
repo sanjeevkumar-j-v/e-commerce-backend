@@ -14,9 +14,28 @@
     <title>SweetTooth</title>
 
     <%- style %>
+    <style>
+      .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .loader img {
+        width: 100px;
+      }
+    </style>
   </head>
   <body>
-    <div class="preloader">
+    <div class="loader"><img src="/img/doughnut-doughnuts.gif" /></div>
+ 
+    <!-- <div class="preloader">
       <div class="loader">
         <div class="ytp-spinner">
           <div class="ytp-spinner-container">
@@ -31,16 +50,26 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <%- body %>
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
       <i class="lni lni-chevron-up"></i>
     </a>
     <%- script %>
+    <!-- JQuery CDN -->
+    <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/bootstrap.5.0.0.alpha-2-min.js"></script>
     <script src="/js/count-up.min.js"></script>
     <script src="/js/wow.min.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          // display loader on page load and fade out after page is loaded
+          $(".loader").fadeOut(1000);
+        }, 1000);
+      };
+    </script>
   </body>
 </html>
