@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/css/products.css" />
+
+<%- include('header'); %>
+
+<section id="services" class="service-section pt-150">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+        <div class="section-title text-center">
+          <h1 class="wow fadeInUp mb-20" data-wow-delay=".4s">Most Sold Products</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <ol>
+            <% for (i in [1,2,3,4,5]) { %>
+              <li class="section-title text-center">
+                <span class="wow fadeInUp" data-wow-delay=".4s"><%= products[i].name %></span>
+              </li>     
+            <% } %> 
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-xl-6 col-lg-8">
+        <div class="section-title text-center mt-70 mb-10">
+          <h1 class="wow fadeInUp" data-wow-delay=".4s">Sales count of products</h1>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <canvas id="barChart"></canvas>
+        <br><hr>
+      </div>
+      <div class="col-lg-8 mt-50 mb-100">
+        <canvas id="doughnutChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/js/Chart.min.js"></script>
+<script>
+    console.log(">>> ",`<%= salescount %>`);
+    new Chart('barChart', {
+      type: 'bar',
+      data: {
+        labels: `<%= productsname %>`.split(','),
+        datasets: [{
+          label: 'Sales Count',
+          backgroundColor: '#e8505b',
+          data: `<%= salescount %>`.split(',')
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+
+    new Chart('doughnutChart', {
+      type: 'doughnut',
+      data: {
+        labels: `<%= productsname %>`.split(','),
+        datasets: [{
+          label: 'Sales Count',
+          backgroundColor: ['#e8505b', '#e8115b', '#0b6eff', 'green', 'yellow', 'orange', 'red', 'brown', 'cyan', 'purple', 'grey', 'blue'],
+          data: `<%= salescount %>`.split(',')
+        }]
+      },
+      options: {
+        responsive: true,
+      }
+    });
+
+</script>
+
+<%- include('footer'); %>

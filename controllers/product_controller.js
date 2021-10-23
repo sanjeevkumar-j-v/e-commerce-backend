@@ -89,3 +89,20 @@ module.exports.remove = async function (req, res) {
     return res.redirect("/products");
   });
 };
+module.exports.sales = async function (req, res) {
+  var products = await Product.find({})
+                // .sort({'sales_count': -1});
+  var productsname = [];
+  var salescount = [];
+  for (i of products) {
+    productsname.push(i.name);
+    salescount.push(i.sales_count);
+  }
+  products.sort((a, b) => (a.sales_count < b.sales_count) ? 1 : -1);
+  console.log(salescount);
+  return res.render("sales", {
+    products,
+    productsname,
+    salescount
+  });
+};

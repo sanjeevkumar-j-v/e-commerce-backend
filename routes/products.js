@@ -9,5 +9,6 @@ router.get("/modify", productContoller.modify);
 router.get("/remove/:productId", productContoller.remove);
 router.post("/add", productContoller.add);
 router.post("/update", productContoller.update);
+router.get("/sales", productContoller.sales);
 
 module.exports = router;
